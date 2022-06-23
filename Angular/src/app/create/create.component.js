@@ -5,17 +5,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { Component } from '@angular/core';
-let AppComponent = class AppComponent {
-    constructor() {
-        this.name = '';
+let CreateComponent = class CreateComponent {
+    constructor() { }
+    ngOnInit() {
     }
 };
-AppComponent = __decorate([
+CreateComponent = __decorate([
     Component({
-        selector: 'app',
-        templateUrl: './app.component.html',
-        styleUrls: ['./app.component.scss']
+        selector: 'app-create',
+        templateUrl: './create.component.html',
+        styleUrls: ['./create.component.scss']
     })
-], AppComponent);
-export { AppComponent };
-//# sourceMappingURL=app.component.js.map
+], CreateComponent);
+export { CreateComponent };
+//# sourceMappingURL=create.component.js.map

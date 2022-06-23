@@ -4,18 +4,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-import { Component } from '@angular/core';
-let AppComponent = class AppComponent {
-    constructor() {
-        this.name = '';
+import { Injectable } from '@angular/core';
+let HttpService = class HttpService {
+    constructor(http) {
+        this.http = http;
+    }
+    getData(link) {
+        return this.http.get(link);
+    }
+    postData(link, body) {
+        return this.http.post(link, body, { withCredentials: true });
     }
 };
-AppComponent = __decorate([
-    Component({
-        selector: 'app',
-        templateUrl: './app.component.html',
-        styleUrls: ['./app.component.scss']
-    })
-], AppComponent);
-export { AppComponent };
-//# sourceMappingURL=app.component.js.map
+HttpService = __decorate([
+    Injectable()
+], HttpService);
+export { HttpService };
+//# sourceMappingURL=http.service.js.map
