@@ -10,17 +10,24 @@ namespace PE
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+            services.AddControllers();
+            services.AddMvc();
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+            services.AddSwaggerGen();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Web1 v1"));
             }
             app.UseStaticFiles();
             if (!env.IsDevelopment())
@@ -37,6 +44,8 @@ namespace PE
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });*/
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Web1 v1"));
         }
     }
 }
