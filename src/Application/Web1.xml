@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Web1</name>
+    </assembly>
+    <members>
+        <member name="M:Web1.AccountController.#ctor(Microsoft.AspNetCore.Identity.UserManager{Web1.Infrastructure.Peoplelogin},Microsoft.AspNetCore.Identity.SignInManager{Web1.Infrastructure.Peoplelogin},Web1.Services.PeopleService,Microsoft.AspNetCore.Identity.RoleManager{Microsoft.AspNetCore.Identity.IdentityRole{System.Guid}})">
+            <summary>
+            Контроллер отвечающий за авторизацию / аунтитефикацю пользователей
+            </summary>
+            <param name="userManager"></param>
+            <param name="signInManager"></param>
+            <param name="peopleService"></param>
+            <param name="roleManager"></param>
+        </member>
+        <member name="M:Web1.AccountController.Register(System.String,System.String)">
+            <summary>
+            Добавление нового пользователя
+            </summary>
+            <param name="Email"></param>
+            <param name="Password"></param>
+        </member>
+        <member name="M:Web1.AccountController.Login(Web1.PostForms.SignInForm)">
+            <summary>
+            Авторизация пользователя
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Web1.AccountController.Logout">
+            <summary>
+            Выход из аккаунта
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Web1.AccountController.ChangePassword(System.Guid,System.String,System.String,System.String)">
+            <summary>
+            Сменить пароль
+            </summary>
+            <param name="Id"></param>
+            <param name="Email"></param>
+            <param name="OldPassword"></param>
+            <param name="NewPassword"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Web1.CommentsController">
+            <summary>
+            Получение и отправка комментариев
+            </summary>
+        </member>
+        <member name="M:Web1.CommentsController.#ctor(Microsoft.Extensions.Logging.ILogger{Web1.PeopleDataController},Web1.Services.CommentService)">
+            <summary>
+            DI
+            </summary>
+            <param name="logger">log</param>
+            <param name="service">for test</param>
+        </member>
+        <member name="M:Web1.CommentsController.GetComments(System.Guid)">
+            <summary>
+            Получить комментарии к обьявлению
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Web1.CommentsController.Post(Web1.Domain.PostComment)">
+            <summary>
+            Отправить комментарий
+            </summary>
+            <param name="PostId">Id обьявления</param>
+            <param name="description">Текст комментария</param>
+            <param name="user">id автора</param>
+            <returns></returns>
+        </member>
+        <member name="M:Web1.CommentsController.EditReturn(System.Guid,System.String)">
+            <summary>
+            Изменение комментария
+            </summary>
+            <param name="CommentId">Id изменяемого</param>
+            <param name="Description">Текст комментария</param>
+            <returns></returns>
+        </member>
+        <member name="M:Web1.CommentsController.Delete(System.Guid)">
+            <summary>
+            Удаление комментария
+            </summary>
+            <param name="CommentId">Id удаляемого</param>
+            <returns></returns>
+        </member>
+        <member name="M:Web1.CommentsController.GetAll">
+            <summary>
+            Получить все комментарии из бд(test)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Web1.PeopleController.GetNumber(System.Int32)">
+            <summary>
+            Получить информацию о пользователе
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Web1.PeopleDataController.GetNumber(System.Int32)">
+            <summary>
+            Получить информацию о пользователе
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Web1.PostController.GetByUserId">
+            <summary>
+            Получить обьявления
+            </summary>
+        </member>
+        <member name="M:Web1.PostController.GetNumber(System.Int32)">
+            <summary>
+            Получить обьявления
+            </summary>
+        </member>
+        <member name="M:Web1.PostController.GePosttById(System.Guid)">
+            <summary>
+            Получить объявление по id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Web1.PostController.GetCommentsByPost(System.Guid)">
+            <summary>
+            Получить с комментариями
+            </summary>
+            <param name="id">id обьявления</param>
+            <returns></returns>
+        </member>
+        <member name="M:Web1.PostController.CreatePost(Web1.Domain.Post)">
+            <summary>
+            Создать обьявление
+            </summary>
+            <param name="Name"></param>
+            <param name="UserId"></param>
+            <param name="Description"></param>
+            <param name="PictuteLink"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Web1.PostController.CreateEmptyPost">
+            <summary>
+            Создать пустое обьявление
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Web1.PostController.Edit(System.Guid,System.String,System.String)">
+            <summary>
+            Изменить обьявление
+            </summary>
+            <param name="Id">Id изменяемого</param>
+            <param name="Name"></param>
+            <param name="Description"></param>
+            <param name="PictuteLink"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Web1.PostController.Delete(System.Guid)">
+            <summary>
+            Удалить
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Web1.Controllers.RolesController.Create(System.String)">
+            <summary>
+            Создать роль
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Web1.Controllers.RolesController.Delete(System.String)">
+            <summary>
+            Удалить роль
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Web1.Controllers.RolesController.Edit(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Изменение ролей
+            </summary>
+            <param name="userId"></param>
+            <param name="roles"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Web1.Controllers.UserController.Create(System.String,System.String)">
+            <summary>
+            Admin: Добавить пользователя
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Web1.Controllers.UserController.Edit(Web1.Infrastructure.Peoplelogin)">
+            <summary>
+            Admin: Изменить информацию о пользователе
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Web1.Controllers.UserController.Delete(System.Guid)">
+            <summary>
+            Admin: Удалить пользователя
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

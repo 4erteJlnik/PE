@@ -1,0 +1,54 @@
+div {
+  border-radius: 10px;
+}
+
+.btn {
+  background: #8e8d8a;
+  color: #eae7dc;
+}
+
+.btn:hover {
+  cursor: default;
+  text-decoration: none;
+  color: #d8c3a5;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+input:focus {
+  outline: solid 2px #e98074;
+  border: 1px solid #e98074;
+  box-shadow: none;
+}
+
+.cl1 {
+  height: 510px;
+  width: 55%;
+  background: white;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #8e8d8a4b;
+  box-shadow: 2px 2px 8px #8e8d8a4b;
+}
+
+.cl2 {
+  background: #eae7dc;
+  padding: 5%;
+  color: #8e8d8a;
+}
+
+form {
+  padding: 2%;
+}
+
+h3 {
+  border-bottom: 1px solid #8e8d8a;
+}
+
+textarea{
+  width: 95%;
+  height: 150px;
+}

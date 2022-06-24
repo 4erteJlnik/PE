@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg nav-inline">
+  <div class="container-fluid">
+    <a routerLink="" class="navbar-brand">MyStore</a>
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-inline">
+      <li class="nav-item">
+        <a routerLink="/store" class="nav-link">Категория 1</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/store" class="nav-link">Категория 2</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/store" class="nav-link">Категория 3</a>
+      </li>
+    </ul>
+    <form class="d-flex input-group searchsize">
+      <select>
+        <option selected="" value="" data-marker="option">
+          Любая категория
+        </option>
+        <option class="catmain">Категория 1</option>
+        <option>Подкатегория 1</option>
+        <option>Подкатегория 2</option>
+        <option class="catmain">Категория 2</option>
+        <option>Подкатегория 1</option>
+        <option>Подкатегория 2</option>
+        <option class="catmain">Категория 3</option>
+        <option>Подкатегория 1</option>
+        <option>Подкатегория 2</option>
+      </select>
+      <input
+        type="search"
+        class="form-control"
+        placeholder="Поиск по объявлениям"
+        aria-label="Search"
+      />
+      <button class="btn" type="button">Найти</button>
+    </form>
+    <a routerLink="/add" class="a1">Разместить объявление</a>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a routerLink="/auth" class="nav-link">Вход</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/create" class="nav-link">Регистрация</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div>
+<router-outlet></router-outlet>
+</div>
+<footer class="fixed-bottom page-footer font-small ">
+  <div class="footer-copyright text-center container">© 2022
+  </div>
+</footer>

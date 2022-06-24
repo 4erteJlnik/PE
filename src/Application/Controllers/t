@@ -1,0 +1,48 @@
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Web1.Domain;
+using Web1.Services;
+using Web1.Infrastructure.Repository;
+
+namespace Web1
+{
+    [ApiController]
+    [Route("[controller]")]
+    public class testController : Controller
+    {
+        private readonly ILogger<FileManager> _logger;
+        private readonly FTPlink _link;
+        public testController( ILogger<FileManager> logger,FTPlink link)
+        {
+            _logger = logger;
+            _link = link;
+        }
+        [HttpPost]
+        public IActionResult Upload(IFormFile file)
+        {
+            FileManager f = new FileManager(_link);
+            try{
+                byte[] buffer = new byte[file.Length];
+                file.OpenReadStream().Read(buffer,0,(int)file.Length);
+                f.save(file.FileName,buffer);
+                return Ok();
+            }
+            catch(Exception e)
+            {
+                return Problem(e.ToString());
+            }
+        }
+        [HttpGet]
+        public FileResult Download(String filename)
+        {
+            FileManager f = new FileManager(_link);
+                return File(f.read(filename),"image/png");
+
+        }
+    }
+}
