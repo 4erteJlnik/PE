@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { Post } from './Post';
+
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',

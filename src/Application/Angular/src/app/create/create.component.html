@@ -1,46 +1,43 @@
 <div class="cl2">
   <div class="container cl1 text-center">
-    <form class="">
+    <form [formGroup]="formCreate" (ngSubmit)="Add">
       <h3>Регистрация</h3>
-      <label for="???" class="sr-only">Имя</label>
+      <label for="fio" class="sr-only">Имя</label>
       <input
         type="text"
-        id="email"
+        id="fio"
         class="form-control"
         placeholder="Ваше имя"
-        required=""
+        required="required"
         autofocus=""
         formControlName="???"
       />
-      <label for="inputEmail" class="sr-only">Email</label>
+      <label for="email" class="sr-only">Email</label>
       <input
         type="email"
         id="email"
         class="form-control"
         placeholder="Введите E-mail"
-        required=""
-        autofocus=""
+        required="required"
         formControlName="Email"
       />
       <label for="password" class="sr-only">Пароль</label>
       <input
         type="password"
-        id="password"
         maxlength="25"
         class="form-control"
         placeholder="Ваш пароль"
-        required=""
+        required="required"
         formControlName="Password"
       />
-      <label for="???" class="sr-only">Повторите пароль</label>
+      <label for="confirmPassword" class="sr-only">Повторите пароль</label>
       <input
         type="password"
-        id="???"
         maxlength="25"
         class="form-control"
         placeholder="Ваш пароль"
-        required=""
-        formControlName="???"
+        required="required"
+        formControlName="Password"
       />
       <br />
       <button class="btn btn-lg btn-block" type="submit">
