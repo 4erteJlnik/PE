@@ -63,7 +63,7 @@ namespace PE.Services
         {
             Peopledto old = _peopleRepository.GetByIdAsync(People.ID).Result;
             if (old == null)
-                throw new Exception("���������� �� ������� " + People.ID.ToString());
+                throw new Exception("Errror in Edit " + People.ID.ToString());
             old.DateOfCreate = People.DateOfCreate;
             old.Avatar = People.Avatar;
             old.FIO = People.FIO;
@@ -76,7 +76,7 @@ namespace PE.Services
         {
             Peopledto old = _peopleRepository.GetByIdAsync(People.ID).Result;
             if (old == null)
-                throw new Exception("���������� �� ������� " + People.ID.ToString());
+                throw new Exception("Errror in EditVoid " + People.ID.ToString());
             old.DateOfCreate = People.DateOfCreate;
             old.Avatar = People.Avatar;
             old.FIO = People.FIO;
