@@ -11,12 +11,14 @@ import { GeneralComponent } from './general/general.component';
 import { StoreComponent } from './store/store.component';
 import { AddComponent } from './add/add.component';
 import { CreateComponent } from './create/create.component';
+import { EditComponent } from './edit/edit.component';
 const routes = [
     { path: 'auth', component: AuthComponent },
     { path: '', component: GeneralComponent },
     { path: 'store', component: StoreComponent },
     { path: 'add', component: AddComponent },
-    { path: 'create', component: CreateComponent }
+    { path: 'create', component: CreateComponent },
+	{ path: 'edit', component: EditComponent }
 ];
 let AppRoutingModule = class AppRoutingModule {
 };

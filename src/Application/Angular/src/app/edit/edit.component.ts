@@ -3,12 +3,12 @@ import { ReactiveFormsModule, Validators, FormControl, FormGroup, FormBuilder } 
 import { HttpService } from '../http.service';
 
 @Component({
-  selector: 'app-add',
-  templateUrl: './add.component.html',
-  styleUrls: ['./add.component.scss'],
+  selector: 'app-edit',
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.scss'],
   providers: [HttpService]
 })
-export class AddComponent implements OnInit {
+export class EditComponent implements OnInit {
 	categories = [
 		{ id: 1, name: "Категория 1" },
 		{ id: 2, name: "Подкатегория 1" },
@@ -21,11 +21,11 @@ export class AddComponent implements OnInit {
 		{ id: 9, name: "Подкатегория 2" },
 	];
 	
-	addPost: FormGroup;
+	editPost: FormGroup;
 	
     constructor(private httpService: HttpService, private fb: FormBuilder) {
 		
-		this.addPost = new FormGroup(
+		this.editPost = new FormGroup(
 		{
 		  name: new FormControl('', [Validators.required]),
 		  description: new FormControl('', [Validators.required]),
@@ -36,7 +36,7 @@ export class AddComponent implements OnInit {
 	}
 
 	get f() {
-		return this.addPost.controls;
+		return this.editPost.controls;
 	}
 	
 	submitted = false;
@@ -44,12 +44,12 @@ export class AddComponent implements OnInit {
 	onSubmit() {
 		this.submitted = true;
 		
-		if (this.addPost.invalid) {
+		if (this.editPost.invalid) {
 			return;
 		}
 		
-        console.log(this.addPost);
-        this.httpService.postData('https://localhost:5001/Account/New', this.addPost.value).subscribe();
+        console.log(this.editPost);
+        this.httpService.postData('https://localhost:5001/Account/Edit', this.editPost.value).subscribe();
     }
 
 

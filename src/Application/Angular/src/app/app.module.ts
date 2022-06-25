@@ -6,18 +6,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GeneralComponent } from './general/general.component';
 import { AddComponent } from './add/add.component';
+import { AccComponent } from './acc/acc.component';
 import { CreateComponent } from './create/create.component';
 import { StoreComponent } from './store/store.component';
 import { AuthComponent } from './auth/auth.component';
+import { EditComponent } from './edit/edit.component';
 
 import { HttpClientModule }   from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [
-	BrowserModule,
+		BrowserModule,
     	FormsModule, 
-	AppRoutingModule,
+		AppRoutingModule,
     	HttpClientModule,
     	ReactiveFormsModule
     ],
@@ -27,6 +29,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 	StoreComponent,
 	AuthComponent,
 	AddComponent,
+	AccComponent,
+	EditComponent,
 	CreateComponent
 	],
     bootstrap: [AppComponent]

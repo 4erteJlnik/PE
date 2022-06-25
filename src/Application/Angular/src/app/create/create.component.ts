@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule, FormControl, FormGroup, FormBuilder, AbstractControl} from '@angular/forms';
+import { ReactiveFormsModule, Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { HttpService } from '../http.service';
+import { CustomValidators } from './CustomValidators';
 
 @Component({
     selector: 'app-create',
@@ -9,39 +10,41 @@ import { HttpService } from '../http.service';
     providers: [HttpService]
 })
 
-export class PasswordValidation {
-
-    static MatchPassword(AC: AbstractControl) {
-        let password = AC.get('password').value; // to get value in input tag
-        let confirmPassword = AC.get('confirmPassword').value; // to get value in input tag
-        if (password != confirmPassword) {
-            console.log('false');
-            AC.get('confirmPassword').setErrors({ MatchPassword: true })
-        } else {
-            console.log('true');
-            return null
-        }
-    }
-}
-
 export class CreateComponent implements OnInit {
-    FormCreate: FormGroup;
-
+	formCreate: FormGroup;
+	
     constructor(private httpService: HttpService, private fb: FormBuilder) {
-        this.FormCreate = fb.group({
-            fio: new FormControl(''),
-            email: new FormControl(''),
-            password: new FormControl(''),
-            confirmPassword: new FormControl(''),
-            validator: PasswordValidation.MatchPassword // your validation method
-        })
+		
+		this.formCreate = new FormGroup(
+		{
+		  fio: new FormControl('', [Validators.required]),
+		  email: new FormControl('', [Validators.required]),
+		  phone: new FormControl('', [Validators.pattern("[+][0-9][(][0-9]{3}[)][0-9]{3}[-][0-9]{2}[-][0-9]{2}")]),
+		  password: new FormControl('', [Validators.required]),
+		  confirmPassword: new FormControl('', [Validators.required])
+		},
+
+		CustomValidators.mustMatch('password', 'confirmPassword'), // insert here
+	  );
+	}
+	
+	get f() {
+		return this.formCreate.controls;
+	}
+	
+	submitted = false;
+	
+    onSubmit() {
+		this.submitted = true;
+		
+		if (this.formCreate.invalid) {
+			return;
+		}
+		
+        console.log(this.formCreate);
+        this.httpService.postData('https://localhost:5001/Account/RegisterPost', this.formCreate.value).subscribe();
     }
 
-    Add() {
-        console.log(this.FormCreate);
-        this.httpService.postData('https://localhost:5001/Account/RegisterPost', this.FormCreate.value).subscribe();
-    }
-
-    ngOnInit(): void {
-    }
+    ngOnInit() {
+	}
 }

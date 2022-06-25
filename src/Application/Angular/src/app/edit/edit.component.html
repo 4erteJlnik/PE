@@ -1,7 +1,7 @@
 <div class="cl2">
 	<div class="container cl1 text-center align-centre">
-    <form [formGroup]="addPost" (ngSubmit)="onSubmit()">
-		<h3>Разместить объявление</h3>
+    <form [formGroup]="editPost" (ngSubmit)="onSubmit()">
+		<h3>Редактировать объявление</h3>
 	
 		<div class="form-group">
 			<label class="sr-only">Название</label>
@@ -75,11 +75,10 @@
 				<div *ngIf="f.description.errors.required">Обязательное поле</div>
 			</div>		
 		</div>
-		<p>
 		<div class="form-group">
-			<button class="btn btn-lg btn-block" type="submit">Разместить</button>
+			<button class="btn btn-lg btn-block" type="submit">Сохранить</button>
+			<a routerLink="/acc" class="nav-link">Отмена</a>
 		</div>
-		
     </form>
   </div>
 </div>
