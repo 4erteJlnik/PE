@@ -5,29 +5,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { Component } from '@angular/core';
-import { HttpService } from '../http.service';
-let StoreComponent = class StoreComponent {
-    constructor(httpService) {
-        this.httpService = httpService;
-        this.posts = [];
-    }
+let GeneralComponent = class GeneralComponent {
+    constructor() { }
     ngOnInit() {
-        this.httpService.getData("http://localhost:5000/Post/GetNumber?number=2147483647").subscribe((data) => {
-            this.posts = data;
-            this.posts.forEach(element => {
-                element.date = new Date(element.dateOfCreate);
-                element.dateOfCreate = element.dateOfCreate.slice(0, 10);
-            });
-        });
     }
 };
-StoreComponent = __decorate([
+GeneralComponent = __decorate([
     Component({
         selector: 'app-general',
         templateUrl: './general.component.html',
-        styleUrls: ['./general.component.scss'],
-        providers: [HttpService]
+        styleUrls: ['./general.component.scss']
     })
-], StoreComponent);
-export { StoreComponent };
+], GeneralComponent);
+export { GeneralComponent };
 //# sourceMappingURL=general.component.js.map

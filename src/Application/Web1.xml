@@ -24,7 +24,7 @@
             <summary>
             Авторизация пользователя
             </summary>
-            <param name="model"></param>
+            
             <returns></returns>
         </member>
         <member name="M:Web1.AccountController.Logout">

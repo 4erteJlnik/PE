@@ -64,7 +64,7 @@ namespace Web1.Services
         {
             Peopledto old = _peopleRepository.GetByIdAsync(People.ID).Result;
             if (old == null)
-                throw new Exception("���������� �� ������� " + People.ID.ToString());
+                throw new Exception("Error " + People.ID.ToString());
             old.DateOfCreate = People.DateOfCreate;
             old.Avatar = People.Avatar;
             old.FIO = People.FIO;
@@ -77,7 +77,7 @@ namespace Web1.Services
         {
             Peopledto old = _peopleRepository.GetByIdAsync(People.ID).Result;
             if (old == null)
-                throw new Exception("���������� �� ������� " + People.ID.ToString());
+                throw new Exception("Error " + People.ID.ToString());
             old.DateOfCreate = People.DateOfCreate;
             old.Avatar = People.Avatar;
             old.FIO = People.FIO;
