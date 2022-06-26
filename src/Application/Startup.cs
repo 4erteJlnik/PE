@@ -150,7 +150,7 @@ namespace Web1
              }
             app.UseSpa(spa =>
              {
-                 spa.Options.SourcePath = "AngularProject";
+                 spa.Options.SourcePath = "Angular";
                  spa.UseAngularCliServer(npmScript: "start");
              });*/
 

@@ -11,8 +11,8 @@ namespace Web1.Initialize
     {
         public static async Task InitializeAsync(UserManager<Peoplelogin> userManager, RoleManager<IdentityRole<Guid>> roleManager)
         {
-            string adminEmail = "ItsSimpleAdmin@admin.store";
-            string password = "Qwerty123!";
+            string adminEmail = "admin@admin";
+            string password = "123456789";
             if (await roleManager.FindByNameAsync("admin") == null)
             {
                 await roleManager.CreateAsync(new IdentityRole<Guid>("admin"));
