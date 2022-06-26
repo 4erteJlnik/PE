@@ -6,21 +6,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AuthComponent } from './auth/auth.component';
-import { GeneralComponent } from './general/general.component';
+import { HomeComponent } from './home';
+import { LoginComponent } from './account/login.component';
+import { RegisterComponent } from './account/register.component';
 import { StoreComponent } from './store/store.component';
 import { AddComponent } from './add/add.component';
-import { CreateComponent } from './create/create.component';
 import { AccComponent } from './acc/acc.component';
 import { EditComponent } from './edit/edit.component';
+import { LayoutComponent } from './account/layout.component';
+const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
 const routes = [
-    { path: 'auth', component: AuthComponent },
-    { path: '', component: GeneralComponent },
+    { path: '', component: HomeComponent },
+    {
+        path: 'account', component: LayoutComponent,
+        children: [
+            { path: 'login', component: LoginComponent },
+            { path: 'register', component: RegisterComponent }
+        ]
+    },
     { path: 'store', component: StoreComponent },
     { path: 'acc', component: AccComponent },
     { path: 'add', component: AddComponent },
     { path: 'edit', component: EditComponent },
-    { path: 'create', component: CreateComponent }
+    
 ];
 let AppRoutingModule = class AppRoutingModule {
 };

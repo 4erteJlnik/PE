@@ -6,40 +6,47 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { GeneralComponent } from './general/general.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AddComponent } from './add/add.component';
 import { AccComponent } from './acc/acc.component';
-import { CreateComponent } from './create/create.component';
 import { StoreComponent } from './store/store.component';
-import { AuthComponent } from './auth/auth.component';
 import { EditComponent } from './edit/edit.component';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// used to create fake backend
+import { fakeBackendProvider } from './_helpers';
+import { AppRoutingModule } from './app-routing.module';
+import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { AppComponent } from './app.component';
+import { AlertComponent } from './_components';
+import { HomeComponent } from './home';
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     NgModule({
         imports: [
             BrowserModule,
-            FormsModule,
-            AppRoutingModule,
+            ReactiveFormsModule,
             HttpClientModule,
-            ReactiveFormsModule
+            AppRoutingModule
         ],
         declarations: [
             AppComponent,
-            GeneralComponent,
+            AlertComponent,
             StoreComponent,
-            AuthComponent,
             AddComponent,
             AccComponent,
             EditComponent,
-            CreateComponent
+            HomeComponent
+        ],
+        providers: [
+            { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+            { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+            // provider used to create fake backend
+            fakeBackendProvider
         ],
         bootstrap: [AppComponent]
     })
 ], AppModule);
 export { AppModule };
+;
 //# sourceMappingURL=app.module.js.map

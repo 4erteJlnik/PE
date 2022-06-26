@@ -6,16 +6,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { Component } from '@angular/core';
 let AppComponent = class AppComponent {
-    constructor() {
-        this.name = '';
+    constructor(accountService) {
+        this.accountService = accountService;
+        this.accountService.user.subscribe(x => this.user = x);
+    }
+    logout() {
+        this.accountService.logout();
     }
 };
 AppComponent = __decorate([
-    Component({
-        selector: 'app',
-        templateUrl: './app.component.html',
-        styleUrls: ['./app.component.scss']
-    })
+    Component({ selector: 'app', templateUrl: 'app.component.html', styleUrls: ['./app.component.scss'] })
 ], AppComponent);
 export { AppComponent };
 //# sourceMappingURL=app.component.js.map

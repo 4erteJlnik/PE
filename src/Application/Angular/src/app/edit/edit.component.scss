@@ -8,6 +8,11 @@ div {
   margin:10px;
 }
 
+a, a:visited {
+  color: #8e8d8a;
+  padding: 2%;
+}
+
 .btn:hover {
   cursor: default;
   text-decoration: none;
@@ -26,7 +31,6 @@ input:focus {
 }
 
 .cl1 {
-  height: 720px;
   width: 55%;
   background: white;
   border-width: 1px;

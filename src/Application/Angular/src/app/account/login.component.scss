@@ -1,0 +1,52 @@
+div {
+  border-radius: 10px;
+}
+
+.btn {
+  background: #8e8d8a;
+  color: #eae7dc;
+}
+
+a, a:visited {
+  color: #8e8d8a;
+  padding: 2%;
+}
+
+a:hover{
+  color: #E98074;
+}
+
+.btn:hover {
+  cursor: default;
+  text-decoration: none;
+  color: #d8c3a5;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+input:focus {
+  outline: solid 2px #e98074;
+  border: 1px solid #e98074;
+  box-shadow: none;
+}
+
+.cl1 {
+  background: white;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #8e8d8a4b;
+  box-shadow: 2px 2px 8px #8e8d8a4b;
+  color: #8e8d8a;
+  padding: 3%;
+}
+
+form {
+  padding: 2%;
+}
+
+h3 {
+  border-bottom: 1px solid #8e8d8a;
+}

@@ -1,24 +1,29 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AuthComponent } from './auth/auth.component';
-import { GeneralComponent } from './general/general.component';
+import { Routes, RouterModule } from '@angular/router';
+
+import { HomeComponent } from './home';
 import { StoreComponent } from './store/store.component';
 import { AddComponent } from './add/add.component';
-import { CreateComponent } from './create/create.component';
 import { AccComponent } from './acc/acc.component';
 import { EditComponent } from './edit/edit.component';
 
+const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
+
 const routes: Routes = [
-    { path: 'auth', component: AuthComponent },
-    { path: '', component:  GeneralComponent},
+    { path: '', component: HomeComponent},
+
+    { path: 'account', loadChildren: accountModule },
     { path: 'store', component:  StoreComponent},
     { path: 'acc', component: AccComponent},
     { path: 'add', component: AddComponent},
     { path: 'edit', component: EditComponent},
-    { path: 'create', component:  CreateComponent}];
+
+    // otherwise redirect to home
+    { path: '**', redirectTo: '' }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

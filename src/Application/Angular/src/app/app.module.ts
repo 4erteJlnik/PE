@@ -1,38 +1,45 @@
-﻿import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Routes, RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { GeneralComponent } from './general/general.component';
 import { AddComponent } from './add/add.component';
 import { AccComponent } from './acc/acc.component';
-import { CreateComponent } from './create/create.component';
 import { StoreComponent } from './store/store.component';
-import { AuthComponent } from './auth/auth.component';
 import { EditComponent } from './edit/edit.component';
 
-import { HttpClientModule }   from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// used to create fake backend
+import { fakeBackendProvider } from './_helpers';
+
+import { AppRoutingModule } from './app-routing.module';
+import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { AppComponent } from './app.component';
+import { AlertComponent } from './_components';
+import { HomeComponent } from './home';
 
 @NgModule({
     imports: [
-		BrowserModule,
-    	FormsModule, 
-		AppRoutingModule,
-    	HttpClientModule,
-    	ReactiveFormsModule
+        BrowserModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        AppRoutingModule
     ],
     declarations: [
-	AppComponent, 
-	GeneralComponent,
-	StoreComponent,
-	AuthComponent,
-	AddComponent,
-	AccComponent,
-	EditComponent,
-	CreateComponent
-	],
+        AppComponent,
+        AlertComponent,
+        StoreComponent,
+        AddComponent,
+	    AccComponent,
+	    EditComponent,
+        HomeComponent
+    ],
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+	// provider used to create fake backend
+        fakeBackendProvider
+    ],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { };
