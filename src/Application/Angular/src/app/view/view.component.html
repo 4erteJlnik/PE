@@ -1,0 +1,41 @@
+<div class="col-md-8 offset-md-2 mt-5">
+	<div class="card">
+		<div class="card-body cl1">
+		
+			<div class="category-wrap cl1">
+				<p>Название: <!--{{ post.name }}--> </p>
+				<p>Цена: <!--{{ post.cost }}--> </p>
+				<p>Продавец: <!--{{ post.creatorId }}--> </p>
+				<p>Дата создания: <!--{{ post.dateOfCreate }}--> </p>
+			</div>
+			
+			<div class="category-wrap cl1">
+				<h4>Комментарии</h4>
+			</div>
+			
+			<div class="category-wrap cl1">
+				<h5>Оставить комментарий</h5>
+				<form [formGroup]="addCom" (ngSubmit)="onSubmit()">
+					<div class="form-group">
+						<textarea 
+							name="comment" 
+							placeholder="Комментарий"
+							cols="40" 
+							rows="3" 
+							formControlName="description" 
+							[ngClass]="{ 'is-invalid': submitted && f.description.errors }">
+						</textarea>
+						<div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+							<div *ngIf="f.description.errors.required">Обязательное поле</div>
+						</div>		
+					</div>
+					<p>
+					<div class="form-group">
+						<button class="btn btn-lg btn-block" type="submit">Добавить</button>
+					</div>
+			
+				</form>
+			</div>	
+		</div>
+	</div>
+</div>

@@ -43,10 +43,7 @@ namespace Web1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            /*services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "AngularProject/dist";
-            });*/
+           
             services.AddCors();
             services.AddControllers();
             services.AddMvc().AddFluentValidation(); ;
@@ -133,6 +130,10 @@ namespace Web1
                 })
                 .AddEntityFrameworkStores<WebContext>()
                 .AddDefaultTokenProviders();
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "Angular/dist";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -147,12 +148,9 @@ namespace Web1
             /*  if (!env.IsDevelopment())
              {
                  app.UseSpaStaticFiles();
-             }
-            app.UseSpa(spa =>
-             {
-                 spa.Options.SourcePath = "Angular";
-                 spa.UseAngularCliServer(npmScript: "start");
-             });*/
+             }*/
+            app.UseSpaStaticFiles();
+            
 
             //app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -172,6 +170,12 @@ namespace Web1
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "Angular";
+                spa.UseAngularCliServer(npmScript: "start");
             });
         }
     }
