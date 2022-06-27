@@ -14,7 +14,10 @@ let LoginComponent = class LoginComponent {
     }
     ngOnInit() {
         this.form = this.formBuilder.group({
-            username: ['', Validators.required],
+            username: ['',
+                Validators.required
+                //, Validators.email]
+            ],
             password: ['', Validators.required]
         });
     }
@@ -36,6 +39,10 @@ let LoginComponent = class LoginComponent {
                 // get return url from query parameters or default to home page
                 const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
                 this.router.navigateByUrl(returnUrl);
+            },
+            error: error => {
+                this.alertService.error(error);
+                this.loading = false;
             }
         });
     }

@@ -16,9 +16,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
         function handleRoute() {
             switch (true) {
-                case url.endsWith('/users/authenticate') && method === 'POST':
+                case url.endsWith('/Account/LoginPost') && method === 'POST':
                     return authenticate();
-                case url.endsWith('/users/register') && method === 'POST':
+                case url.endsWith('/Account/RegisterPost') && method === 'POST':
                     return register();
                 case url.endsWith('/users') && method === 'GET':
                     return getUsers();
@@ -39,7 +39,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         function authenticate() {
             const { username, password } = body;
             const user = users.find(x => x.username === username && x.password === password);
-            if (!user) return error('Username or password is incorrect');
+            if (!user) return error('Почта или пароль введены неверно');
             return ok({
                 ...basicDetails(user),
                 token: 'fake-jwt-token'
@@ -50,7 +50,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             const user = body
 
             if (users.find(x => x.username === user.username)) {
-                return error('Username "' + user.username + '" is already taken')
+                return error('Аккаунт с указанной электронной почтой уже существует')
             }
 
             user.id = users.length ? Math.max(...users.map(x => x.id)) + 1 : 1;

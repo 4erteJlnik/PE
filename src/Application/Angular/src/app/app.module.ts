@@ -7,6 +7,7 @@ import { AddComponent } from './add/add.component';
 import { AccComponent } from './acc/acc.component';
 import { StoreComponent } from './store/store.component';
 import { EditComponent } from './edit/edit.component';
+import { ViewComponent } from './view/view.component';
 
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
@@ -29,8 +30,9 @@ import { HomeComponent } from './home';
         AlertComponent,
         StoreComponent,
         AddComponent,
-	    AccComponent,
-	    EditComponent,
+	AccComponent,
+	EditComponent,
+	ViewComponent,
         HomeComponent
     ],
     providers: [

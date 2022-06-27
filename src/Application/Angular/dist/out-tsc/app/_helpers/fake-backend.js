@@ -12,9 +12,9 @@ let FakeBackendInterceptor = class FakeBackendInterceptor {
         return handleRoute();
         function handleRoute() {
             switch (true) {
-                case url.endsWith('/users/authenticate') && method === 'POST':
+                case url.endsWith('/Account/LoginPost') && method === 'POST':
                     return authenticate();
-                case url.endsWith('/users/register') && method === 'POST':
+                case url.endsWith('/Account/RegisterPost') && method === 'POST':
                     return register();
                 case url.endsWith('/users') && method === 'GET':
                     return getUsers();
@@ -34,13 +34,13 @@ let FakeBackendInterceptor = class FakeBackendInterceptor {
             const { username, password } = body;
             const user = users.find(x => x.username === username && x.password === password);
             if (!user)
-                return error('Username or password is incorrect');
+                return error('Почта или пароль введены неверно');
             return ok(Object.assign(Object.assign({}, basicDetails(user)), { token: 'fake-jwt-token' }));
         }
         function register() {
             const user = body;
             if (users.find(x => x.username === user.username)) {
-                return error('Username "' + user.username + '" is already taken');
+                return error('Аккаунт с указанной электронной почтой уже существует');
             }
             user.id = users.length ? Math.max(...users.map(x => x.id)) + 1 : 1;
             users.push(user);

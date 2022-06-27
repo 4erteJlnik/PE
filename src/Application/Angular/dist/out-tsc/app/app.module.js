@@ -7,6 +7,7 @@ import { AddComponent } from './add/add.component';
 import { AccComponent } from './acc/acc.component';
 import { StoreComponent } from './store/store.component';
 import { EditComponent } from './edit/edit.component';
+import { ViewComponent } from './view/view.component';
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
 import { AppRoutingModule } from './app-routing.module';
@@ -31,6 +32,7 @@ AppModule = __decorate([
             AddComponent,
             AccComponent,
             EditComponent,
+            ViewComponent,
             HomeComponent
         ],
         providers: [

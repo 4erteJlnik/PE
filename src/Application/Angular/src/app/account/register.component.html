@@ -15,7 +15,7 @@
                     <label for="lastName">Номер телефона в формате +x (xxx)xxx-xx-xx</label>
                     <input type="tel" formControlName="lastName" class="form-control" placeholder="+7(000)000-00-00" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
                     <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-                    <div *ngIf="f.phone.errors.pattern">Введите данные в указанном формате</div>
+                    <div *ngIf="f.lastName.errors.pattern">Введите данные в указанном формате</div>
                     </div>
                 </div>
 
@@ -24,6 +24,7 @@
                     <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
                     <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
                         <div *ngIf="f.username.errors.required">Обязательное поле</div>
+			<!-- <div *ngIf="f.username.errors.email">Неверная почта</div> -->
                     </div>
                 </div>
 

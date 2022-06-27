@@ -40,14 +40,17 @@
 			<button class="btn" type="button">Найти</button>
 		</div>
 
-
-
-		<div class="navbar-nav">
 		<a routerLink="/add" class="nav-link">Разместить объявление</a>
-		<a routerLink="account/login" class="nav-link" *ngIf="!user">Вход</a>
-		<a routerLink="account/register" class="nav-link" *ngIf="!user">Регистрация</a>
-		<a routerLink="/acc" class="nav-link" *ngIf="user">Мой кабинет</a>
-		<a class="nav-item nav-link" (click)="logout()" *ngIf="user" >Выход</a>
+
+		<div class="navbar-nav" *ngIf="user">
+			<a routerLink="/users" class="nav-link">Пользователи</a>
+			<a routerLink="/acc" class="nav-link">Мой кабинет</a>
+			<a class="nav-item nav-link" (click)="logout()">Выход</a>
+		</div>
+
+		<div class="navbar-nav" *ngIf="!user">
+			<a routerLink="account/login" class="nav-link">Вход</a>
+			<a routerLink="account/register" class="nav-link">Регистрация</a>
 		</div>
     </div>
 </nav>

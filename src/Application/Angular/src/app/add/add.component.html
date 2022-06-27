@@ -1,85 +1,92 @@
 <div class=" cl2">
 	<div class="card container cl1 text-center align-centre" >
-	<h3>Разместить объявление</h3>
-    <form [formGroup]="addPost" (ngSubmit)="onSubmit()">
-		<div class="form-group">
-			<label class="sr-only">Название</label>
-			<input
-				type="text"
-				class="form-control"
-				placeholder="Название"
-				required=""
-				autofocus=""
-				formControlName="name"
-				[ngClass]="{ 'is-invalid': submitted && f.name.errors }" 
-			/>
-			<div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-				<div *ngIf="f.name.errors.required">Обязательное поле</div>
+		<h3>Разместить объявление</h3>
+		<form [formGroup]="addPost" (ngSubmit)="onSubmit()" *ngIf="user">
+			<div class="form-group">
+				<label class="sr-only">Название</label>
+				<input
+					type="text"
+					class="form-control"
+					placeholder="Название"
+					required=""
+					autofocus=""
+					formControlName="name"
+					[ngClass]="{ 'is-invalid': submitted && f.name.errors }" 
+				/>
+				<div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+					<div *ngIf="f.name.errors.required">Обязательное поле</div>
+				</div>
 			</div>
-		</div>
-	  
-		<div class="form-group">
-			<label class="sr-only">Город</label>
-			<input
-				type="text"
-				class="form-control"
-				placeholder="Город"
-				required=""
-				autofocus=""
-				formControlName="city"
-				[ngClass]="{ 'is-invalid': submitted && f.city.errors }" 
-			/>
-			<div *ngIf="submitted && f.city.errors" class="invalid-feedback">
-				<div *ngIf="f.city.errors.required">Обязательное поле</div>
+		  
+			<div class="form-group">
+				<label class="sr-only">Город</label>
+				<input
+					type="text"
+					class="form-control"
+					placeholder="Город"
+					required=""
+					autofocus=""
+					formControlName="city"
+					[ngClass]="{ 'is-invalid': submitted && f.city.errors }" 
+				/>
+				<div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+					<div *ngIf="f.city.errors.required">Обязательное поле</div>
+				</div>
 			</div>
-		</div>
+			
+			<div class="form-group">
+				<label class="sr-only">Цена</label>
+				<input
+					type="number"
+					class="form-control"
+					placeholder="Цена"
+					required=""
+					formControlName="cost"
+					[ngClass]="{ 'is-invalid': submitted && f.cost.errors }" 
+				/>
+				<div *ngIf="submitted && f.cost.errors" class="invalid-feedback">
+					<div *ngIf="f.cost.errors.required">Обязательное поле</div>
+				</div>
+			</div>
+		  
+			<div class="form-group">
+				<label class="sr-only">Категория</label><br />
+				<select formControlName="category" [ngClass]="{ 'is-invalid': submitted && f.category.errors }">
+					<option [ngValue]="null" disabled>Выбрать категорию</option>
+					<option *ngFor="let category of categories" [ngValue]="category.id">{{category.name}}</option>
+				</select>
+				<div *ngIf="submitted && f.category.errors" class="invalid-feedback">
+					<div *ngIf="f.category.errors.required">Обязательное поле</div>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="sr-only">Описание</label>
+				<textarea 
+					name="comment" 
+					placeholder="Описание"
+					cols="40" 
+					rows="3" 
+					formControlName="description" 
+					[ngClass]="{ 'is-invalid': submitted && f.description.errors }">
+				</textarea>
+				<div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+					<div *ngIf="f.description.errors.required">Обязательное поле</div>
+				</div>		
+			</div>
+			<p>
+			<div class="form-group">
+				<button class="btn btn-lg btn-block" type="submit">Разместить</button>
+			</div>
+			
+		</form>
 		
-		<div class="form-group">
-			<label class="sr-only">Цена</label>
-			<input
-				type="number"
-				class="form-control"
-				placeholder="Цена"
-				required=""
-				formControlName="cost"
-				[ngClass]="{ 'is-invalid': submitted && f.cost.errors }" 
-			/>
-			<div *ngIf="submitted && f.cost.errors" class="invalid-feedback">
-				<div *ngIf="f.cost.errors.required">Обязательное поле</div>
-			</div>
+		<div class="cl3" *ngIf="!user">
+		Для размещения объявления необходимо 
+		<a routerLink="../account/login">войти</a>
+		.
 		</div>
-	  
-		<div class="form-group">
-			<label class="sr-only">Категория</label><br />
-			<select formControlName="category" [ngClass]="{ 'is-invalid': submitted && f.category.errors }">
-				<option [ngValue]="null" disabled>Выбрать категорию</option>
-				<option *ngFor="let category of categories" [ngValue]="category.id">{{category.name}}</option>
-			</select>
-			<div *ngIf="submitted && f.category.errors" class="invalid-feedback">
-				<div *ngIf="f.category.errors.required">Обязательное поле</div>
-			</div>
-		</div>
-		
-		<div class="form-group">
-			<label class="sr-only">Описание</label>
-			<textarea 
-				name="comment" 
-				placeholder="Описание"
-				cols="40" 
-				rows="3" 
-				formControlName="description" 
-				[ngClass]="{ 'is-invalid': submitted && f.description.errors }">
-			</textarea>
-			<div *ngIf="submitted && f.description.errors" class="invalid-feedback">
-				<div *ngIf="f.description.errors.required">Обязательное поле</div>
-			</div>		
-		</div>
-		<p>
-		<div class="form-group">
-			<button class="btn btn-lg btn-block" type="submit">Разместить</button>
-		</div>
-		
-    </form>
-  </div>
+	
+	</div>
 
 </div>

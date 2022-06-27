@@ -3,9 +3,10 @@ import { Component } from '@angular/core';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
 import { HttpService } from '../http.service';
 let AddComponent = class AddComponent {
-    constructor(httpService, fb) {
+    constructor(httpService, fb, accountService) {
         this.httpService = httpService;
         this.fb = fb;
+        this.accountService = accountService;
         this.categories = [
             { id: 1, name: "Категория 1" },
             { id: 2, name: "Подкатегория 1" },
@@ -18,6 +19,7 @@ let AddComponent = class AddComponent {
             { id: 9, name: "Подкатегория 2" },
         ];
         this.submitted = false;
+        this.accountService.user.subscribe(x => this.user = x);
         this.addPost = new FormGroup({
             name: new FormControl('', [Validators.required]),
             description: new FormControl('', [Validators.required]),

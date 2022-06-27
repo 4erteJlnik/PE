@@ -14,7 +14,7 @@ let AccountService = class AccountService {
         return this.userSubject.value;
     }
     login(username, password) {
-        return this.http.post(`${environment.apiUrl}/users/authenticate`, { username, password })
+        return this.http.post(`${environment.apiUrl}/Account/LoginPost`, { username, password })
             .pipe(map(user => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('user', JSON.stringify(user));
@@ -29,7 +29,7 @@ let AccountService = class AccountService {
         this.router.navigate(['/account/login']);
     }
     register(user) {
-        return this.http.post(`${environment.apiUrl}/users/register`, user);
+        return this.http.post(`${environment.apiUrl}/Account/RegisterPost`, user);
     }
     getAll() {
         return this.http.get(`${environment.apiUrl}/users`);

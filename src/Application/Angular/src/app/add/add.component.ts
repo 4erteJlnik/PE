@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { HttpService } from '../http.service';
 
+import { AccountService } from '../_services';
+import { User } from '../_models';
+
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
@@ -9,6 +12,8 @@ import { HttpService } from '../http.service';
   providers: [HttpService]
 })
 export class AddComponent implements OnInit {
+	user: User;
+	
 	categories = [
 		{ id: 1, name: "Категория 1" },
 		{ id: 2, name: "Подкатегория 1" },
@@ -23,7 +28,8 @@ export class AddComponent implements OnInit {
 	
 	addPost: FormGroup;
 	
-    constructor(private httpService: HttpService, private fb: FormBuilder) {
+    constructor(private httpService: HttpService, private fb: FormBuilder, private accountService: AccountService) {
+		this.accountService.user.subscribe(x => this.user = x);
 		
 		this.addPost = new FormGroup(
 		{

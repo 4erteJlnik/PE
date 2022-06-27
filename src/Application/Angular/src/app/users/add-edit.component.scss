@@ -5,6 +5,16 @@ div {
 .btn {
   background: #8e8d8a;
   color: #eae7dc;
+  margin: 1px;
+}
+
+a, a:visited {
+  color: #8e8d8a;
+  padding: 2%;
+}
+
+a:hover{
+  color: #E98074;
 }
 
 .btn:hover {
@@ -25,18 +35,13 @@ input:focus {
 }
 
 .cl1 {
-  width: 55%;
   background: white;
   border-width: 1px;
   border-style: solid;
   border-color: #8e8d8a4b;
   box-shadow: 2px 2px 8px #8e8d8a4b;
-}
-
-.cl2 {
-  background: #eae7dc;
-  padding: 5%;
   color: #8e8d8a;
+  padding: 3%;
 }
 
 form {
@@ -44,17 +49,5 @@ form {
 }
 
 h3 {
-	padding: 1%;
   border-bottom: 1px solid #8e8d8a;
-}
-
-textarea{
-  width: 95%;
-  height: 150px;
-}
-.cl3{
-  padding: 2px 10px 10px;
-}
-a, a:visited {
-  color: #e98074;
 }

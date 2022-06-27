@@ -1,0 +1,35 @@
+<div class="card">
+	<div class="card-body cl1">
+		<h1>Пользователи</h1>
+		<button routerLink="add" class="btn">Добавить</button>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th style="width: 30%">Имя</th>
+					<th style="width: 30%">Номер телефона</th>
+					<th style="width: 30%">Почта</th>
+					<th style="width: 10%"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let user of users">
+					<td>{{user.firstName}}</td>
+					<td>{{user.lastName}}</td>
+					<td>{{user.username}}</td>
+					<td style="white-space: nowrap">
+						<button routerLink="edit/{{user.id}}" class="btn">Изменить</button>
+						<button (click)="deleteUser(user.id)" class="btn" [disabled]="user.isDeleting">
+							<span *ngIf="user.isDeleting" class="spinner-border spinner-border-sm"></span>
+							<span *ngIf="!user.isDeleting">Удалить</span>
+						</button>
+					</td>
+				</tr>
+				<tr *ngIf="!users">
+					<td colspan="4" class="text-center">
+						<span class="spinner-border spinner-border-lg align-center"></span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

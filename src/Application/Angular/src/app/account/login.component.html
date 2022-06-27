@@ -8,6 +8,7 @@
                     <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
                     <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
                         <div *ngIf="f.username.errors.required">Обязательное поле</div>
+			<!-- <div *ngIf="f.username.errors.email">Неверная почта</div> -->
                     </div>
                 </div>
                 <div class="form-group">

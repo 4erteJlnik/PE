@@ -24,9 +24,13 @@ export class RegisterComponent implements OnInit {
         this.form = this.formBuilder.group({
             firstName: ['', Validators.required],
             lastName: ['', Validators.pattern("[+][0-9][(][0-9]{3}[)][0-9]{3}[-][0-9]{2}[-][0-9]{2}")],
-            username: ['', Validators.required],
+            username: ['', //[
+				Validators.required
+			//, Validators.email]
+		],
             password: ['', Validators.required],
-            confirmPassword: ['', Validators.required]
+            confirmPassword: ['', Validators.required],
+	    role: ['']
         }, {validator: CustomValidators.mustMatch('password', 'confirmPassword')});
     }
 
@@ -44,6 +48,10 @@ export class RegisterComponent implements OnInit {
             return;
         }
 
+	this.form.patchValue({
+  		role: '1'
+	});
+
         this.loading = true;
         this.accountService.register(this.form.value)
             .pipe(first())
@@ -51,6 +59,10 @@ export class RegisterComponent implements OnInit {
                 next: () => {
                     this.alertService.success('Registration successful', { keepAfterRouteChange: true });
                     this.router.navigate(['../login'], { relativeTo: this.route });
+                },
+                error: error => {
+                    this.alertService.error(error);
+                    this.loading = false;
                 }
             });
     }

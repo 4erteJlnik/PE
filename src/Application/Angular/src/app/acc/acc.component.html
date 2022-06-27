@@ -1,22 +1,26 @@
 <div>
   <div class="block-left">
     <div class="category-wrap cl1">
-		<p>Имя: </p>
-		<p>Почта: </p>
-		<p>Номер телефона: </p>
-		<p>Рейтинг: </p>
+		<h4>Профиль</h4>
+		<ul>
+			<li>Имя: {{user.firstName}}</li>
+			<li>Почта: {{user.username}}</li>
+			<li>Номер телефона: {{user.lastName}}</li>
+			<li>Рейтинг:</li>
+		</ul>
     </div>
   </div>
   <div class="container block-right">
 	<h2>Ваши объявления</h2>
     <div class="row">
 		<div class="col-sm-3 cl1" >	
-			<div class="category-wrap cl2" *ngFor="let post of posts">
-				<p>Название: {{ post?.name }}</p>
-				<p>Цена: {{ post?.cost }}</p>
-				<p>Продавец: {{ post?.creatorId }}</p>
-				<p>Дата создания: {{ post?.dateOfCreate }}</p>
+			<div class="category-wrap cl2" >
+				<p>Название: <!--{{ post.name }}--> </p>
+				<p>Цена: <!--{{ post.cost }}--> </p>
+				<p>Продавец: <!--{{ post.creatorId }}--> </p>
+				<p>Дата создания: <!--{{ post.dateOfCreate }}--> </p>
 				<ul>
+					<a routerLink="/view" class="nav-link a1">Посмотреть</a>
 					<a routerLink="/edit" class="nav-link a1">Редактировать</a>
 					<a routerLink="/add" class="nav-link a1">Удалить</a>
 				</ul>	
